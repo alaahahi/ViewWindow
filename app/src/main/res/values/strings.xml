@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ViewWindow</string>
+    <string name="companyname">Company Name</string>
+    <string name="serverip">SERVER IP</string>
+    <string name="typeview">Type View</string>
+    <string name="back">BACK</string>
+    <string name="save">SAVE</string>
+    <string name="q_solution">Q_Solution</string>
+    <string name="btn">TODO</string>
+    <string name="todo">TODO</string>
+    <string-array name="spinardata">
+        <item>view_window</item>
+        <item>tickets</item>
+        <item>employee</item>
+    </string-array>
+</resources>

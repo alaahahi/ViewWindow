@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:paddingStart="5dp"
+    tools:ignore="RtlSymmetry"
+    tools:layout_editor_absoluteY="25dp">
+
+
+    <TextView
+        android:id="@+id/comanyname"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/companyname"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/company"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/company"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorAccent"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="@android:color/background_light"
+        android:textColorLink="?android:attr/textColorSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/comanyname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/comanyname"
+        app:layout_constraintTop_toTopOf="@+id/comanyname"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/serverlbn"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="39dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/serverip"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/screenlbn"
+        app:layout_constraintEnd_toStartOf="@+id/ip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/comanyname" />
+
+    <EditText
+        android:id="@+id/ip"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/serverlbn"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorAccent"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="@+id/serverlbn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/serverlbn"
+        app:layout_constraintTop_toTopOf="@+id/serverlbn"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/screenlbn"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/serverlbn"
+        android:layout_alignParentStart="true"
+
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="45dp"
+        android:soundEffectsEnabled="true"
+        android:text="@string/typeview"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comanyname" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@drawable/qsystem4"
+        app:layout_constraintBottom_toBottomOf="@+id/screenlbn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/screenlbn"
+        app:layout_constraintTop_toTopOf="@+id/screenlbn" />
+
+    <Button
+        android:id="@+id/savebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/serverlbn"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="48dp"
+        android:background="@android:drawable/alert_dark_frame"
+        android:contentDescription="@string/q_solution"
+        android:text="@string/save"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/savebtn"
+        android:layout_alignBottom="@+id/savebtn"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_toStartOf="@+id/ip"
+        android:background="@android:drawable/alert_dark_frame"
+        android:text="@string/back"
+        android:textColor="@android:color/background_light"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
