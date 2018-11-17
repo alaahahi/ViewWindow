@@ -4,36 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.developersolution.viewwindow.viewwindow.MainActivity">
+    tools:context="com.developersolution.viewwindow.viewwindow.MainActivity"
+    tools:layout_editor_absoluteY="25dp">
 
 
     <WebView
         android:id="@+id/viewwindow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="88dp">
+
+    </WebView>
 
     <ImageButton
         android:id="@+id/settingbtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:contentDescription="@string/btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_manage"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="6dp" />
+        tools:layout_editor_absoluteY="0dp" />
 
     <ImageButton
         android:id="@+id/reloadbtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/settingbtn"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:contentDescription="@string/todo"
+        android:visibility="gone"
         app:srcCompat="@android:drawable/ic_menu_revert"
-        tools:layout_editor_absoluteY="6dp" android:contentDescription="@string/todo" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <LinearLayout
+        android:id="@+id/layoutsitting"
+        android:layout_width="0dp"
+        android:layout_height="239dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/viewwindow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/serverlbn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/serverip"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteY="47dp" />
+
+        <EditText
+            android:id="@+id/ip"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:background="@color/colorAccent"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@android:color/background_light"
+            tools:ignore="LabelFor"
+
+            tools:layout_editor_absoluteX="601dp"
+            tools:layout_editor_absoluteY="41dp"
+            tools:targetApi="o" />
+
+        <TextView
+            android:id="@+id/screenlbn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/typeview"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/savebtn"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimaryDark"
+            android:contentDescription="@string/q_solution"
+            android:text="@string/save"
+            android:textColor="@android:color/background_light" />
+
+        <Button
+            android:id="@+id/hidebtn"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorAccent"
+            android:contentDescription="@string/q_solution"
+            android:text="@string/hidebtn"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

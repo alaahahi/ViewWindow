@@ -13,12 +13,22 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.SslErrorHandler;
 import android.net.http.SslError;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-  WebView window;
+    LinearLayout layoutsitting;
+
+    WebView window;
+    EditText ip;
+    Button save, hide;
+    Spinner spinner1;
 
     ImageButton sitting,reload;
     String ip_server , type_window;
@@ -32,17 +42,20 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        sitting = (ImageButton) findViewById(R.id.settingbtn);
-        reload =(ImageButton) findViewById(R.id.reloadbtn);
-        window =(WebView) findViewById(R.id.viewwindow);
-
+        sitting= findViewById(R.id.settingbtn);
+        reload = findViewById(R.id.reloadbtn);
+        window = findViewById(R.id.viewwindow);
+        spinner1 = findViewById(R.id.spinner);
+        ip = findViewById(R.id.ip);
+        save = findViewById(R.id.savebtn);
+        hide = findViewById(R.id.hidebtn);
+        layoutsitting = findViewById(R.id.layoutsitting);
         SharedPreferences sh = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
-        type_window = sh.getString("type","");
-        ip_server= sh.getString("ip","");
+        type_window = sh.getString("type", "");
+        ip_server = sh.getString("ip", "");
 
         window.getSettings().getBuiltInZoomControls();
         window.getSettings().getAllowFileAccess();
-        window.getSettings().getAllowFileAccessFromFileURLs();
         window.getSettings().setAllowContentAccess(true);
         window.getSettings().getDomStorageEnabled();
         window.getSettings().setJavaScriptEnabled(true);
@@ -56,20 +69,51 @@ public class MainActivity extends AppCompatActivity {
         window.setWebViewClient(
                 new SSLTolerentWebViewClient()
         );
-        window.loadUrl("http://"+ip_server+type_window);
-        sitting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivities(new Intent[]{new Intent(MainActivity.this, Pop.class)});
-            }
-        });
+        window.loadUrl("http://" + ip_server +"/"+ type_window);
+
         reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 window.reload();
             }
         });
+        sitting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layoutsitting.setVisibility(View.VISIBLE);
+            }
+        });
 
+
+        ArrayAdapter<CharSequence> marry = ArrayAdapter.createFromResource(this, R.array.spinardata, android.R.layout.simple_list_item_1);
+        marry.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(marry);
+        String ipprf = sh.getString("ip", "");;
+        ip.setText(ipprf);
+
+        hide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                layoutsitting.setVisibility(View.GONE);
+            }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sh = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
+                SharedPreferences.Editor useredit = sh.edit();
+
+                // useredit.putString("company",company.getText().toString());
+                useredit.putString("ip", ip.getText().toString());
+                useredit.putString("type", spinner1.getSelectedItem().toString());
+                useredit.apply();
+
+                Toast.makeText(getBaseContext(), "Thanks Your Changes is Saved",
+                        Toast.LENGTH_LONG).show();
+
+
+            }
+        });
     }
     private class SSLTolerentWebViewClient extends WebViewClient {
 
