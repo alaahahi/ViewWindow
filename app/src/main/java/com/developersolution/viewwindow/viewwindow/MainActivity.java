@@ -1,5 +1,6 @@
 package com.developersolution.viewwindow.viewwindow;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.os.PowerManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,9 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton sitting,reload;
     String ip_server , type_window;
-
+    protected PowerManager.WakeLock mWakeLock;
+    @SuppressLint("InvalidWakeLockTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        this.mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK,"");
+        this.mWakeLock.acquire();
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 new SSLTolerentWebViewClient()
         );
         window.loadUrl("http://" + ip_server +"/"+ type_window);
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +120,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onDestroy() {
+        this.mWakeLock.release();
+        super.onDestroy();
     }
     private class SSLTolerentWebViewClient extends WebViewClient {
 
